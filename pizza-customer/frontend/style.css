@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  color: white;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url(./img/bg.jpg);
+  background-size: cover;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: linear-gradient(
+      45deg,
+      rgba(13, 13, 13, 1),
+      rgba(13, 13, 13, 0.8),
+      rgba(42, 41, 41, 0.25)
+    )
+    fixed;
+}
+
+h1 {
+  font-family: "Abril Fatface", cursive;
+  font-size: 8rem;
+  margin-bottom: 2rem;
+  color: transparent;
+  background: linear-gradient(
+    0deg,
+    rgba(231, 241, 253, 0.2) 0%,
+    rgb(252, 244, 197) 50%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+h3 {
+  color: rgb(128, 128, 128);
+  line-height: 2rem;
+  font-size: 1.5rem;
+}
+
+.fa-bars,
+.fa-basket-shopping {
+  color: whitesmoke;
+  font-size: 2em;
+}
+a {
+  background: white 0.1;
+  list-style: none;
+  text-decoration: none;
+}
+.pizza_img {
+  position: relative;
+  max-width: 900px;
+  border-radius: 50%;
+  box-shadow: -15px 15px 80px 20px black;
+  right: -150px;
+}
+#logo {
+  position: relative;
+  width: 150px;
+  top: 50px;
+}
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(220, 20, 60, 0.015);
+  backdrop-filter: blur(8px);
+  height: 120px;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.pizzabox {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px;
+}
+
+#pizza_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 40%;
+}
+
+#pizza_right {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+#pizza_left input {
+  margin-top: 200px;
+  width: 30%;
+  height: 60px;
+  border-radius: 30px;
+  font-weight: bolder;
+  font-size: larger;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.398);
+  border: 3px solid rgba(0, 0, 0, 0.5);
+  align-self: center;
+}
+#pizza_left input:focus {
+  outline-style: none;
+}
+
+#pizza_left button {
+  margin-top: 20px;
+  width: 30%;
+  height: 60px;
+  border: orangered 4px solid;
+  background: transparent;
+  font-size: 1.5rem;
+  color: orangered;
+  border-radius: 30px;
+  transition: 0.5s ease-in-out;
+  place-self: center;
+}
+#pizza_left button:hover {
+  border: rgb(255, 77, 0) 4px solid;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 44, 11, 0.8),
+    rgba(255, 68, 0, 0.8)
+  );
+  color: rgb(32, 32, 32);
+}
+
+/*-----------MENU------------------------*/
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 44, 11, 0.8),
+    rgba(255, 68, 0, 0.8)
+  );
+  overflow-x: hidden;
+  transition: 0.5s;
+  transition: 0.5s ease-in-out;
+  backdrop-filter: blur(8px);
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 25%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.overlay a {
+  margin-bottom: 2rem;
+  padding: 8px;
+  text-decoration: none;
+  font-size: 3rem;
+  font-weight: bolder;
+  color: whitesmoke;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #1b9128;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+/*-----------BASKET------------------------*/
+
+#myBasket {
+  height: 100%;
+  width: 0%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 44, 11, 0.8),
+    rgba(255, 68, 0, 0.8)
+  );
+  overflow-x: hidden;
+  transition: 0.5s ease-in-out;
+  backdrop-filter: blur(8px);
+}
+#myBasket-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 25%;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+#orders {
+  width: 80%;
+  height: 350px;
+  background-color: rgb(142, 38, 0);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+#orderBox{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+}
+#myBasket section {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  width: 80%;
+  height: 20%;
+  gap: 1rem;
+  margin-top: 3rem;
+  align-content: stretch;
+  align-items: center;
+}
+#myBasket ::placeholder {
+  font-size: 1.2rem;
+  color: rgba(245, 245, 245, 0.744);
+}
+
+#myBasket input {
+  padding-left: 1rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  display: block;
+  width: 300px;
+  height: 50px;
+  border-radius: 8px;
+  outline-style: none;
+  border: rgb(142, 38, 0) solid 2px;
+  background: rgb(142, 38, 0);
+  transition: 0.3s;
+}
+#myBasket label {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+#myBasket-content button {
+  position: relative;
+  margin-top: 5rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1b9128;
+  color: whitesmoke;
+  font-weight: bolder;
+  font-size: 1.3rem;
+  box-shadow: 0 0 10px 1px rgb(47, 47, 47);
+  transition: 0.4s ease-in-out;
+}
+
+#myBasket-content button:hover {
+  transform: scale(1.2);
+}
+
+#myBasket input:hover,
+#myBasket input:focus {
+  color: #f1f1f1;
+}
+#myBasket .closebtn {
+  position: absolute;
+  top: 20px;
+  left: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  #myBusket a {
+    font-size: 20px;
+  }
+  #myBusket .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+#pizzaButtonDiv {
+  position: relative;
+  top: 415px;
+  left: 550px;
+}
+
+.pizzabutton {
+  position: fixed;
+  background-color: #1b9128;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.31);
+  
+}
+
+
+#circle0 {
+  transform: rotate(-120deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle0:hover {
+  transform: rotate(-120deg) translate(550px) scale(1.2);
+}
+#circle1 {
+  transform: rotate(-140deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle1:hover {
+  transform: rotate(-140deg) translate(550px) scale(1.2);
+}
+
+#circle2 {
+  transform: rotate(-160deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle2:hover {
+  transform: rotate(-160deg) translate(550px) scale(1.2);
+}
+#circle3 {
+  transform: rotate(-180deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle3:hover {
+  transform: rotate(-180deg) translate(550px) scale(1.2);
+}
+#circle4 {
+  transform: rotate(-200deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle4:hover {
+  transform: rotate(-200deg) translate(550px) scale(1.2);
+}
+#circle5 {
+  transform: rotate(-220deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle5:hover {
+  transform: rotate(-220deg) translate(550px) scale(1.2);
+}
+#circle6 {
+  transform: rotate(-240deg) translate(550px);
+  transition: 0.4s ease-in-out;
+}
+#circle6:hover {
+  transform: rotate(-240deg) translate(550px) scale(1.2);
+}
+
+
+span {
+  display: inline-block;
+  transform: rotate(-180deg);
+}
+
+.pizzabutton:hover {
+  background-color: orangered;
+  transform: scale(1.2);
+}
+
+/* .pizza_img {
+  animation: loadingPizza 2s ease-in-out;
+  animation-fill-mode: forwards;
+} */
+
+@keyframes loadingPizza {
+  0%   {opacity: 0; transform: translate(-100%)}
+  100% {opacity: 1; transform: translate(0px) rotate(360deg);}
+}
+
+#basketImg{
+width: 50px;
+}
