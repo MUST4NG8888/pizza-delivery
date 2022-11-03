@@ -1,0 +1,43 @@
+[{
+    "id" : 1,
+    "name": "Margherita",
+    "toppings": ["mozzarella di bufala campana", " pomodoro san marzano", " basil"],
+    "picture": "/images/Pizza0.png"
+  },
+  {
+    "id" : 2,
+    "name": "Prosciutto di Parma",
+    "toppings": [" prosciutto di parma", " mozzarella di bufala campana", " pomodoro san marzano", " basil", " rucola", " parmigiano reggiano"],
+    "picture": "/images/Pizza1.png"
+  },
+  {
+    "id" : 3,
+    "name": "Calabrese",
+    "toppings": ["salame calabrese piccante", " mozzarella di bufala campana", " pomodoro san marzano", " basil", " pomodoro ciliegino"],
+    "picture": "/images/Pizza2.png"
+  },
+  {
+    "id" : 4,
+    "name": "Tonno e Cipolle",
+    "toppings": ["tonno", " mozzarella", " pomodoro", " basil", " cipolla"],
+    "picture": "/images/Pizza3.png"
+  },
+  {
+    "id" : 5,
+    "name": "Amalfitana",
+    "toppings": ["prosciutto cotto", " mozzarella di bufala campana", " pomodoro", " basil", " capperino"],
+    "picture": "/images/Pizza4.png"
+  },
+  {
+    "id" : 6,
+    "name": "Quattro Formaggi",
+    "toppings": ["mozzarella", " grand padano"," gorgonzola", " ementali", " pomodoro san marzano", " basil"],
+    "picture": "/images/Pizza5.png"
+  },
+  {
+    "id" : 7,
+    "name": "Prosciutto e Funghi",
+    "toppings": ["prosciutto cotto", " mozzarella", " pomodoro"," funghi portobello", " basil"],
+    "picture": "/images/Pizza6.png"
+  }
+]

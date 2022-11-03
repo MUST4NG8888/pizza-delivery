@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "orderDate": "2022-10-17",
+    "pizza": {
+      "id": 1,
+      "name": "Margarita",
+      "amount": 3
+    },
+    "name": "Béla",
+    "street": "Bajcsy",
+    "houseNumber": "8",
+    "city": "Budapest",
+    "zipCode": "1057",
+    "mobile": "+36307777777",
+    "email": "pizzaforever2@gmail.com"
+  }
+]
