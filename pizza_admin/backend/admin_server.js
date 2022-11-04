@@ -3,28 +3,29 @@ const fs = require("fs");
 const cors = require("cors");
 const app = express();
 const port = 8008;
+const fileUpload = require("express-fileupload");
 
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
 
 
-app.use("/images", express.static("http://localhost:9000/pizza/images"));
+app.use("/images", express.static(__dirname + "/../../data/pizza/images"));
 
 
-app.get("/api/orders", (req, res) => {
-  const data = fs.readFileSync(__dirname + "/../../pizzadatas/orders/orders.json");
+app.get("/api/pizzas", (req, res) => {
+  const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
   const pizzas = JSON.parse(data);
 
   res.json(pizzas);
 });
 app.delete("/api/pizzaeditor", (req, res) => {
-  const data = fs.readFileSync(__dirname + "/../../pizzadatas/pizza/pizza.json");
+  const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
   const images = JSON.parse(data);
 
   const chosen = req.body.chosen;
   console.log(chosen);
-  const pictureUploadPath = __dirname + `/../../pizzadatas/pizza/images/image${chosen}.jpg`;
+  const pictureUploadPath = __dirname + `/../../data/pizza/images/image${chosen}.jpg`;
 
 
 
@@ -33,7 +34,7 @@ app.delete("/api/pizzaeditor", (req, res) => {
 
 
   const newArr = JSON.stringify(result);
-  fs.writeFileSync(__dirname + "/../../pizzadatas/pizza/pizza.json", newArr);
+  fs.writeFileSync(__dirname + "/../../data/pizza/pizza.json", newArr);
 
   if (fs.existsSync(pictureUploadPath)) {
     fs.unlinkSync(pictureUploadPath, (err) => {
@@ -47,8 +48,8 @@ app.delete("/api/pizzaeditor", (req, res) => {
   return res.status(200).send("done");
 });
 
-app.post("/api/orders", (req, res) => {
-  const pizza = JSON.parse(fs.readFileSync("http://localhost:9000/pizza/pizza.json"));
+app.post("/api/pizza", (req, res) => {
+  const pizza = JSON.parse(fs.readFileSync(__dirname + "/../../data/pizza/pizza.json"));
   let lastPizzaId = pizza;
   if (lastPizzaId.length === 0) {
     lastPizzaId = 0;
@@ -56,6 +57,17 @@ app.post("/api/orders", (req, res) => {
     lastPizzaId = pizza[pizza.length - 1].id;
   }
 
+  const pictureUploadPath = __dirname + "/images/" + `pizza${lastPizzaId + 1}.png`;
+
+if (req.files) {
+  const uploadedPicture = req.files.picture;
+  uploadedPicture.mv(pictureUploadPath, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+  });
+}
   const name = req.body.pizzaName;
   const toppings = req.body.toppings;
   const picture = req.body.picture;
@@ -69,7 +81,7 @@ app.post("/api/orders", (req, res) => {
 
   pizza.push(newPizzas);
   const newData = JSON.stringify(pizza);
-  fs.writeFileSync("http://localhost:9000/pizza/pizza.json", newData);
+  fs.writeFileSync(__dirname + "/../../data/pizza/pizza.json", newData);
 
   res.sendStatus(204);
 });

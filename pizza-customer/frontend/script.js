@@ -42,7 +42,7 @@ const createButtons = () => {
           console.log(text);
           console.log(appState.pizza[i].toppings);
 
-          let source = `http://localhost:9000${appState.pizza[i].picture}`;
+          let source = `http://localhost:3000${appState.pizza[i].picture}`;
           console.log(source);
 
           pizzaImg.src = source;
@@ -78,7 +78,7 @@ const pizzaLoader = (a) => {
   let pizzaImg = document.createElement("img");
   pizzaImg.className = "pizza_img";
   console.log(appState);
-  pizzaImg.src = `http://localhost:9000${appState.pizza[a].picture}`;
+  pizzaImg.src = `http://localhost:3000${appState.pizza[a].picture}`;
   pizzaImg.id = "pizzaimg";
   pizzaRight.append(pizzaImg);
   pizzaImg.style.animation = "loadingPizza 2s ease-in-out";
@@ -132,25 +132,25 @@ const pizzaLoader = (a) => {
         choosenPizzaImg.id = "basketImg";
         switch (document.getElementById("pizza_name").innerText) {
           case "Margherita":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[0].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[0].picture}`;
             break;
           case "Prosciutto di Parma":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[1].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[1].picture}`;
             break;
           case "Calabrese":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[2].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[2].picture}`;
             break;
           case "Tonno e Cipolle":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[3].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[3].picture}`;
             break;
           case "Amalfitana":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[4].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[4].picture}`;
             break;
           case "Quattro Formaggi":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[5].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[5].picture}`;
             break;
           case "Prosciutto e Funghi":
-            choosenPizzaImg.src = `http://localhost:9000${appState.pizza[6].picture}`;
+            choosenPizzaImg.src = `http://localhost:3000${appState.pizza[6].picture}`;
             break;
         }
       }
@@ -179,7 +179,6 @@ const start = async () => {
 };
 
 const postOrder = async (
-  date,
   pizza,
   name,
   street,
@@ -196,7 +195,6 @@ const postOrder = async (
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      date,
       pizza,
       name,
       street,
@@ -221,7 +219,6 @@ const resetForm = () => {
 };
 
 const makeOrder = async (
-  date,
   pizza,
   name,
   street,
@@ -232,7 +229,6 @@ const makeOrder = async (
   email
 ) => {
   const resStatus = await postOrder(
-    date,
     pizza,
     name,
     street,
@@ -262,22 +258,10 @@ const getOrderInput = async () => {
   let orderMobile = mobileInput.value;
   let orderEmail = emailInput.value;
 
-  let Today = new Date();
-  var date =
-    Today.getFullYear() +
-    "-" +
-    (Today.getMonth() + 1) +
-    "-" +
-    Today.getDate() +
-    " " +
-    Today.getHours() +
-    ":" +
-    Today.getMinutes() +
-    ":" +
-    Today.getSeconds();
+  
+ 
 
   await makeOrder(
-    date,
     chosenPizza,
     orderName,
     orderStreet,

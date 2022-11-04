@@ -7,19 +7,20 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/images", express.static("http://localhost:9000/pizza/images"));
-app.use(express.static(`${__dirname}/../frontend`));
+app.use("/images", express.static(__dirname + "/../../data/pizza/images"));
+app.use("/",express.static(`${__dirname}/../frontend`));
+app.use("/admin",express.static(`${__dirname}/../../pizza_admin/frontend`));
 
 
 app.get("/api/pizza", (req, res) => {
-  const data = fs.readFileSync("http://localhost:9000/pizza/pizza.json");
+  const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
   const pizzas = JSON.parse(data);
 
   res.json(pizzas);
 });
 
 app.post("/api/orders", (req, res) => {
-  const order = JSON.parse(fs.readFileSync(__dirname + "/../../pizzadatas/orders/orders.json"));
+  const order = JSON.parse(fs.readFileSync(__dirname + "/../../data/orders/orders.json"));
   let lastOrderNumber = order;
   if (lastOrderNumber.length === 0) {
     lastOrderNumber = 0;
@@ -27,6 +28,7 @@ app.post("/api/orders", (req, res) => {
     lastOrderNumber = order[order.length - 1].id;
   }
 
+  const Today = new Date();
   const orderDate = req.body.orderDate;
   const orderedItems = req.body.pizza;
   const name = req.body.name;
@@ -39,7 +41,19 @@ app.post("/api/orders", (req, res) => {
   
   const newOrders = {
     id: lastOrderNumber + 1,
-    orderDate: orderDate,
+    orderDate:    
+        Today.getFullYear() +
+        "-" +
+        (Today.getMonth() + 1) +
+        "-" +
+        Today.getDate() +
+        " " +
+        Today.getHours() +
+        ":" +
+        Today.getMinutes() +
+        ":" +
+        Today.getSeconds(),
+
     orderedItems: orderedItems,
     name: name,
     street: street,
@@ -52,7 +66,7 @@ app.post("/api/orders", (req, res) => {
 
   order.push(newOrders);
   const newData = JSON.stringify(order);
-  fs.writeFileSync(__dirname + `/../../pizzadatas/orders/orders.json`, newData);
+  fs.writeFileSync(__dirname + `/../../data/orders/orders.json`, newData);
 
   res.sendStatus(204);
 });
