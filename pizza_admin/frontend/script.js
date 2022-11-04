@@ -8,8 +8,12 @@ const getPizzas = async () => {
     const response = await fetch(`http://localhost:8008/api/pizzas`);
     const data = await response.json();
      await renderPizza(data);
-    console.log(data)
+  };
 
+  const getOrders = async () => {
+    const response = await fetch(`http://localhost:8008/api/orders`);
+    const orders = await response.json();
+     await renderOrders(orders);
   };
 
 // const postPizza = async (e) => {
@@ -36,7 +40,7 @@ const getPizzas = async () => {
 //   };
 
   const renderPizza = async (data) => {
-    pizzaDiv.innerHTML = "";
+    ordersDiv.innerHTML = "";
   
     console.log(data);
     for (let i = 0; i < data.length; i++) {
@@ -66,6 +70,26 @@ const getPizzas = async () => {
     })
   }};
 
+  const renderOrders = async (data) => {
+    ordersDiv.innerHTML = "";
+  
+    for (let i = 0; i < data.length; i++) {
+      let orderBox = document.createElement("div");
+      let orderNumber = document.createElement("h1");
+
+     
+      ordersDiv.append(orderBox);
+      orderBox.append(orderNumber);
+      orderBox.append(orderNumber)
+      orderNumber.innerText = `Rendelés: ${data[i].id}`;
+      
+      for (let j = 0; j < data[i].orderedItems.length; j++) {
+      let orderedPizza = document.createElement("p")
+      orderedPizza.innerText = data[i].orderedItems[j].name
+      }
+    
+  }};
+
 
     getPizzas()
-  
+    getOrders()

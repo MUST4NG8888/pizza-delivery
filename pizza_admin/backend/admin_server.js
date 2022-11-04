@@ -19,6 +19,15 @@ app.get("/api/pizzas", (req, res) => {
 
   res.json(pizzas);
 });
+
+app.get("/api/orders", (req, res) => {
+  const data = fs.readFileSync(__dirname + "/../../data/orders/orders.json");
+  const orders = JSON.parse(data);
+
+  res.json(orders);
+});
+
+
 app.delete("/api/pizzaeditor", (req, res) => {
   const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
   const images = JSON.parse(data);
