@@ -11,7 +11,7 @@ app.use(fileUpload());
 
 
 app.use("/images", express.static(__dirname + "/../../data/pizza/images"));
-
+app.use("/admin", express.static(__dirname + "/../frontend"));
 
 app.get("/api/pizzas", (req, res) => {
   const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
@@ -28,7 +28,7 @@ app.get("/api/orders", (req, res) => {
 });
 
 
-app.delete("/api/pizzaeditor", (req, res) => {
+app.delete("/api/pizzadelete", (req, res) => {
   const data = fs.readFileSync(__dirname + "/../../data/pizza/pizza.json");
   const images = JSON.parse(data);
 

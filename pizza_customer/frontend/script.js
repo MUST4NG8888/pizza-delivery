@@ -184,7 +184,7 @@ const postOrder = async (
   street,
   houseNumber,
   city,
-  zipcode,
+  zipCode,
   mobile,
   email
 ) => {
@@ -200,7 +200,7 @@ const postOrder = async (
       street,
       houseNumber,
       city,
-      zipcode,
+      zipCode,
       mobile,
       email,
     }),
@@ -224,7 +224,7 @@ const makeOrder = async (
   street,
   houseNumber,
   city,
-  zipcode,
+  zipCode,
   mobile,
   email
 ) => {
@@ -234,7 +234,7 @@ const makeOrder = async (
     street,
     houseNumber,
     city,
-    zipcode,
+    zipCode,
     mobile,
     email
   );
@@ -258,8 +258,6 @@ const getOrderInput = async () => {
   let orderMobile = mobileInput.value;
   let orderEmail = emailInput.value;
 
-  
- 
 
   await makeOrder(
     chosenPizza,
