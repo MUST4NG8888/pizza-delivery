@@ -17,17 +17,23 @@ adminDiv.append(modal);
 
 const pizzaForm = document.createElement("form");
 const pizzaImg = document.createElement("img");
+pizzaImg.id = "pizzaImg"
 const pizzaName = document.createElement("input");
+pizzaName.id="name"
 const pizzaToppings = document.createElement("input");
+pizzaToppings.id="toppings"
 const pizzaPictureUpload = document.createElement("input");
 pizzaPictureUpload.setAttribute("type", "file");
+pizzaPictureUpload.id = "file"
 const available = document.createElement("label");
 available.id = "container";
 const avButton = document.createElement("input");
 avButton.setAttribute("type", "checkbox");
+avButton.id="status"
 const avMark = document.createElement("span");
 avMark.id = "checkmark";
 const submitBtn = document.createElement("button");
+submitBtn.innerText="SUBMIT"
 
 modalContent.append(pizzaForm);
 pizzaForm.append(pizzaImg);
@@ -39,10 +45,15 @@ available.append(avButton);
 available.append(avMark);
 pizzaForm.append(submitBtn);
 
+const appState = {
+  data: [],
+};
+
 const getPizzas = async () => {
   const response = await fetch(`http://localhost:8008/api/pizzas`);
   const data = await response.json();
   await renderPizza(data);
+  appState.data = data
 };
 
 const getOrders = async () => {
@@ -51,31 +62,67 @@ const getOrders = async () => {
   await renderOrders(orders);
 };
 
-// const postPizza = async (e) => {
-//     e.preventDefault();
-//     const files = new FormData();
-//     const fileField = document.querySelector('input[type="file"]');
+const postPizza = async (e) => {
+    e.preventDefault();
+    const files = new FormData();
+    const fileField = document.querySelector('input[type="file"]');
 
-//     files.append("title", e.target.title.value);
-//     files.append("photographer", e.target.photographer.value);
-//     files.append("date", `${new Date()}`);
-//     files.append("picture", e.target.file.files[0]);
+    files.append("name", e.target.name.value);
+    files.append("toppings",  e.target.toppings.value);
+    files.append("status",e.target.status.checked)
+    files.append("picture", e.target.file.files[0]);
+    
+    console.log()
 
-//     const url = "http://localhost:8000/images";
-//     const response = await fetch(url, {
-//       method: "POST",
-//       header: { "Content-Type": "multipart/form-data" },
-//       body: files,
-//     });
-//     resetForm();
-//     getPizzas();
-//     if (response.status === 204) {
-//       alert("Uploaded! Congrats! Keep 'em coming!");
-//     }
-//   };
+    const url = "http://localhost:8008/api/pizza";
+    const response = await fetch(url, {
+      method: "POST",
+      header: { "Content-Type": "multipart/form-data" },
+      body: files,
+    });
+    resetPizzaForm();
+    getPizzas();
+    if (response.status === 204) {
+      alert("Uploaded! Congrats! Keep 'em coming!");
+    }
+  };
 
-const editPizza = (editButtonValue) => {
+const editPizza = async (e) => {
+  e.preventDefault();
+  const files = new FormData();
+  const fileField = document.querySelector('input[type="file"]');
+
+  files.append("id", submitBtn.value);
+  files.append("name", e.target.name.value);
+  files.append("toppings",  e.target.toppings.value);
+  files.append("status",e.target.status.checked)
+  files.append("picture", e.target.file.files[0]);
+  
+  console.log()
+
+  const url = "http://localhost:8008/api/edit";
+  const response = await fetch(url, {
+    method: "POST",
+    header: { "Content-Type": "multipart/form-data" },
+    body: files,
+  });
+  resetPizzaForm();
+  getPizzas();
+  if (response.status === 204) {
+    alert("Uploaded! Congrats! Keep 'em coming!");
+  }
+};
+
+const openEditor = (value) => {
   modal.style.display = "block";
+  console.log(appState.data[value-1])
+  pizzaName.value= appState.data[value-1].name
+  pizzaToppings.value = appState.data[value-1].toppings
+  pizzaImg.src = appState.data[value-1].picture
+  submitBtn.value = value-1
+  
+  pizzaForm.addEventListener("submit",(e)=>{editPizza(e)})
+  
 };
 
 const deletePizza = async (id) => {
@@ -119,7 +166,7 @@ const renderPizza = async (data) => {
     editButton.innerText = "EDIT";
     editButton.value = data[i].id;
     editButton.addEventListener("click", function () {
-      editPizza(editButton.value);
+      openEditor(editButton.value);
     });
   }
 };
@@ -162,7 +209,7 @@ const renderOrders = async (data) => {
 getPizzas();
 getOrders();
 
-const resetpizzaForm = () => {
+const resetPizzaForm = () => {
   pizzaName.value = ""
   pizzaToppings.value = ""
   pizzaPictureUpload.value = ""
@@ -170,7 +217,8 @@ const resetpizzaForm = () => {
 
 const close = () => {
   modal.style.display = "none";
-  resetpizzaForm()
+  resetPizzaForm()
 };
 
 modalCloseBtn.addEventListener("click", close);
+

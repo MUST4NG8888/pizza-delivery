@@ -77,20 +77,66 @@ if (req.files) {
     }
   });
 }
-  const name = req.body.pizzaName;
-  const toppings = req.body.toppings;
+  const name = req.body.name;
+  const toppings = req.body.toppings.split(',');
   const picture = req.body.picture;
+  const status = req.body.status
   
   const newPizzas = {
     id: lastPizzaId + 1,
     name: name,
     toppings: toppings,
-    picture: picture
+    status: status,
+    picture: picture,
   };
 
   pizza.push(newPizzas);
   const newData = JSON.stringify(pizza);
   fs.writeFileSync(__dirname + "/../../data/pizza/pizza.json", newData);
+
+  res.sendStatus(204);
+});
+
+app.post("/api/edit", (req, res) => {
+     const pizzas = JSON.parse(fs.readFileSync(__dirname + "/../../data/pizza/pizza.json"));
+  // let lastPizzaId = pizza;
+  // if (lastPizzaId.length === 0) {
+  //   lastPizzaId = 0;
+  // } else {
+  //   lastPizzaId = pizza[pizza.length - 1].id;
+  // }
+  const id = req.body.id;
+  const name = req.body.name;
+  const toppings = req.body.toppings.split(',');
+  const picture = req.body.picture;
+  const status = req.body.status
+
+  const pictureUploadPath = __dirname + "/images/" + `pizza${id}.png`;
+
+if (req.files) {
+  const uploadedPicture = req.files.picture;
+  uploadedPicture.mv(pictureUploadPath, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
+  });
+}
+
+  
+  const newPizzas = {
+    id: id,
+    name: name,
+    toppings: toppings,
+    status: status,
+    picture: picture,
+  };
+
+  const result = JSON.stringify(pizzas.splice(id ,1,newPizzas));
+
+  // pizza.push(newPizzas);
+
+  fs.writeFileSync(__dirname + "/../../data/pizza/pizza.json", result);
 
   res.sendStatus(204);
 });

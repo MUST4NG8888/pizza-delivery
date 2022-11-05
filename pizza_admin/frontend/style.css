@@ -1,3 +1,18 @@
 *{
     background-color: green;
 }
+
+#nav{
+    display: flex;
+    justify-content: space-between;
+}
+#backBtn, #new_pizza{
+    height: 25px;
+    width: 50px;
+}
+#new_pizza{
+    width: 150px;
+}
+img{
+    width: 300px;
+}
