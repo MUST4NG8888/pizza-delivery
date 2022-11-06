@@ -1,18 +1,187 @@
-*{
-    background-color: green;
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#nav{
-    display: flex;
-    justify-content: space-between;
+body {
+  background: #1b9128;
+  padding: 3%;
+  padding-top: 200px;
+  width: 100vw;
+  height: 100vh;
 }
-#backBtn, #new_pizza{
-    height: 25px;
-    width: 50px;
+
+#nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+  background: #14691e96;
+  padding: 50px;
+  backdrop-filter: blur(8px);
 }
-#new_pizza{
-    width: 150px;
+#nav img {
+  position: relative;
+  top: 42px;
 }
-img{
-    width: 300px;
+
+#backBtn,
+#new_pizza {
+  height: 30px;
+}
+
+img {
+  width: 150px;
+}
+
+.title {
+  font-family: "Abril Fatface", cursive;
+  letter-spacing: 0.1rem;
+  color: transparent;
+  background: linear-gradient(
+    0deg,
+    rgba(231, 241, 253, 0.2) 0%,
+    rgb(252, 244, 197) 40%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+#orders {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 40px;
+  background: #14691e;
+  border-radius: 8px;
+  margin-bottom: 100px;
+  padding: 20px;
+  color: whitesmoke;
+}
+
+#pizza {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  justify-content: space-around;
+  background: #14691e;
+  border-radius: 8px;
+  padding: 20px;
+  color: whitesmoke;
+}
+
+#pizza div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#pizza h1 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#orderbox h1 {
+  font-size: 2.5rem;
+  transition: 0.4s ease-in-out;
+}
+
+#orderbox:hover h1 {
+  color: orangered;
+}
+
+#edit {
+  margin-top: 10px;
+  background: transparent;
+  border: 3px solid whitesmoke;
+  color: whitesmoke;
+  border-radius: 4px;
+  font-weight: bolder;
+  width: 68px;
+}
+
+#delete {
+  margin-top: 10px;
+  background: transparent;
+  border: 3px solid orangered;
+  color: orangered;
+  border-radius: 4px;
+  font-weight: bolder;
+  transition: 0.4s ease-in-out;
+}
+
+#delete:hover {
+  background: orangered;
+  color: rgb(146, 39, 0);
+  transform: scale(1.1);
+}
+
+#modal {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  z-index: -1;
+}
+
+#modal_content {
+  visibility: hidden;
+  background-color: #1b9128;
+  border-radius: 8px;
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  opacity: 0;
+  z-index: -1;
+}
+
+button {
+  padding: 4px;
+}
+@keyframes anvil {
+  0% {
+    transform: scale(5) rotate(0);
+    opacity: 0;
+    box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+  }
+  50% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 1;
+    box-shadow: 0 0 0 rgba(161, 161, 161, 0.845);
+  }
+  75% {
+    transform: scale(1) rotate(1deg);
+    opacity: 1;
+    box-shadow: 0 0 250px rgba(106, 106, 106, 0.7);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+    box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+  }
+}
+#modal_content.show {
+  -webkit-animation: anvil 0.7s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  visibility: visible;
+  z-index: 200;
+  opacity: 1;
+}
+#modal.show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 100;
 }

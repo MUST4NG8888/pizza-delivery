@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "orderDate": "2022-11-5 13:11:4",
-    "orderedItems": [{ "name": "Margherita", "amount": "4" }],
-    "name": "Andris",
-    "street": "dsasad",
-    "houseNumber": "8",
-    "city": "Bp",
-    "zipCode": "1081",
-    "mobile": "+36305555555",
-    "email": "asasd@gmail.com"
-  }
-]
+[{"id":1,"orderDate":"2022-11-5 13:11:4","orderedItems":[{"name":"Margherita","amount":"4"}],"name":"Andris","street":"dsasad","houseNumber":"8","city":"Bp","zipCode":"1081","mobile":"+36305555555","email":"asasd@gmail.com"},{"id":2,"orderDate":"2022-11-6 17:41:29","orderedItems":[{"name":"Prosciutto di Parma","amount":"50"}],"name":"Andrew","street":"Éhes","houseNumber":"8","city":"Budapest","zipCode":"1081","mobile":"+36308888777","email":"valakinagyonehes@gmail.com"}]

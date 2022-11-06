@@ -39,9 +39,9 @@
   },
   {
     "id": 4,
-    "name": "Tonno e Cipolle",
+    "name": "Tonóka te drága",
     "toppings": ["tonno", " mozzarella", " pomodoro", " basil", " cipolla"],
-    "status": true,
+    "status": "false",
     "picture": "/images/pizza3.png"
   },
   {
