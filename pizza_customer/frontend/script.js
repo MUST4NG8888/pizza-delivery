@@ -5,6 +5,9 @@ const cityInput = document.getElementById("city");
 const zipCodeInput = document.getElementById("zipCode");
 const mobileInput = document.getElementById("mobile");
 const emailInput = document.getElementById("email");
+const alertBtn = document.getElementById("myAlert");
+const alertClose = document.getElementById("alertClose");
+const alertText = document.getElementById("alertText");
 
 let pizzaArray = [];
 
@@ -69,6 +72,9 @@ const pizzaLoader = (a) => {
   pizzaLeft.id = "pizza_left";
   let pizzaRight = document.createElement("div");
   pizzaRight.id = "pizza_right";
+  let pizzaCollector = document.createElement("div");
+  pizzaLeft.append(pizzaCollector);
+  pizzaCollector.id="textCollector"
   pizzaBox.append(pizzaLeft);
   pizzaBox.append(pizzaRight);
   let pizzaButtonDiv = document.createElement("div");
@@ -86,11 +92,11 @@ const pizzaLoader = (a) => {
   appState.selectedIndex = a;
   let pizzaName = document.createElement("h1");
   pizzaName.id = "pizza_name";
-  pizzaLeft.append(pizzaName);
+  pizzaCollector.append(pizzaName);
   pizzaName.innerText = appState.pizza[a].name;
   let pizzaToppings = document.createElement("h3");
   pizzaToppings.id = "pizza_toppings";
-  pizzaLeft.append(pizzaToppings);
+  pizzaCollector.append(pizzaToppings);
   pizzaToppings.innerText = appState.pizza[a].toppings;
   const amountInput = document.createElement("input");
   amountInput.id = "amount_input";
@@ -108,7 +114,8 @@ const pizzaLoader = (a) => {
         document.getElementById("amount_input").value == 0 ||
         document.getElementById("amount_input").value === undefined
       ) {
-        alert("Nem jó értéket adtál meg!");
+        alertText.innerText="Nem jó értéket adtál meg!"
+        alertBtn.className="show";
       } else {
         let collector = document.createElement("div");
         collector.id = "orderBox";
@@ -239,10 +246,14 @@ const makeOrder = async (
     email
   );
   if (resStatus === 204) {
-    alert("Thanks for your love of Pizza!");
+    
+    alertText.innerText="Thanks for your love of Pizza!"
+    alertBtn.className="show";
+    
     resetForm();
   } else {
-    alert("Something goes wrong");
+    alertText.innerText="Something goes wrong!"
+    alertBtn.className="show";
   }
 };
 
@@ -300,3 +311,10 @@ document
 document
   .getElementById("closebtnBasket")
   .addEventListener("click", closeBasket);
+
+
+ 
+  function close(){
+    document.getElementById("myAlert").classList.remove("show")
+  }
+  alertClose.addEventListener("click", close)

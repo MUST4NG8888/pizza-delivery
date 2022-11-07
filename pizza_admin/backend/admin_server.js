@@ -98,7 +98,7 @@ app.post("/api/pizza", (req, res) => {
 
 app.post("/api/edit", (req, res) => {
   const pizzas = JSON.parse(
-    fs.readFileSync(__dirname + "/../../data/pizza/pizzaedited.json")
+    fs.readFileSync(__dirname + "/../../data/pizza/pizza.json")
   );
 
   const order = req.body.order;
@@ -106,7 +106,7 @@ app.post("/api/edit", (req, res) => {
   const toppings = req.body.toppings.split(",");
   const status = req.body.status;
 
-  const pictureUploadPath =  __dirname + "/../../data/pizza/images/" + `pizza${order}.png`;;
+  const pictureUploadPath =  __dirname + "/../../data/pizza/images/" + `pizza${order}.png`;
 
   if (req.files) {
     const uploadedPicture = req.files.picture;
@@ -130,7 +130,7 @@ app.post("/api/edit", (req, res) => {
   pizzas.splice(order, 1, editedPizza)
 
 
-  fs.writeFileSync(__dirname + "/../../data/pizza/pizzaedited.json",  JSON.stringify(pizzas));
+  fs.writeFileSync(__dirname + "/../../data/pizza/pizza.json",  JSON.stringify(pizzas));
 
   res.sendStatus(204);
 });

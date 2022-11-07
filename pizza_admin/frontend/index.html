@@ -6,11 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="./img/mario_logo.png" type="image/x-icon">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
     <title>Mario's Pizza Admin</title>
 </head>
 <body>
     <div id="nav">
-        <button id="new_pizza">ADD NEW PIZZA</button>
+        <a id="new_pizza"><i class="fa-solid fa-pizza-slice"></i></a>
         <img src="./img/mario_logo.png" alt="logo" id="logo" />
         <button id="backBtn"><a href="http://localhost:3000">HOME</a></button>
 
@@ -20,6 +27,19 @@
     <div id="orders"> </div>
     <h1 class="title">Pizzák:</h1>
     <div id="pizza"></div>
+</div>
+
+
+
+
+<div id="myAlert" >
+
+ 
+  <div class="alert-content">
+    <span class="close" id="alertClose">&times;</span>
+    <p>Uploaded! Congrats! Keep 'em coming!</p>
+  </div>
+
 </div>
 
     <script src="script.js"></script>

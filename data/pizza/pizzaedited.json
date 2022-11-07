@@ -1,87 +1,93 @@
 [
-  {
-    "id": 1,
-    "name": "Margherita",
-    "toppings": [
-      "mozzarella di bufala campana",
-      " pomodoro san marzano",
-      " basil"
-    ],
-    "status": true,
-    "picture": "/images/Pizza0.png"
-  },
-  {
-    "id": 2,
-    "name": "Prosciutto di Parma",
-    "toppings": [
-      "prosciutto di parma",
-      " mozzarella di bufala campana",
-      " pomodoro san marzano",
-      " basil",
-      " rucola",
-      " parmigiano reggiano"
-    ],
-    "status": true,
-    "picture": "/images/pizza1.png"
-  },
-  {
-    "id": 3,
-    "name": "Calabrese",
-    "toppings": [
-      "salame calabrese piccante",
-      " mozzarella di bufala campana",
-      " pomodoro san marzano",
-      " basil",
-      " pomodoro ciliegino"
-    ],
-    "status": true,
-    "picture": "/images/pizza2.png"
-  },
-  {
-    "id": 4,
-    "name": "Tonóka te drága",
-    "toppings": ["tonno", " mozzarella", " pomodoro", " basil", " cipolla"],
-    "status": "false",
-    "picture": "/images/pizza3.png"
-  },
-  {
-    "id": 5,
-    "name": "Amalfitana",
-    "toppings": [
-      "prosciutto cotto",
-      " mozzarella di bufala campana",
-      " pomodoro",
-      " basil",
-      " capperino"
-    ],
-    "status": true,
-    "picture": "/images/pizza4.png"
-  },
-  {
-    "id": 6,
-    "name": "Quattro Formaggi",
-    "toppings": [
-      "mozzarella",
-      " grand padano",
-      " gorgonzola",
-      " ementali",
-      " pomodoro san marzano",
-      " basil"
-    ],
-    "status": true,
-    "picture": "/images/pizza5.png"
-  },
-  {
-    "id": 7,
-    "name": "Prosciutto e Funghi",
-    "toppings": [
-      "prosciutto cotto",
-      " mozzarella",
-      " pomodoro",
-      " funghi portobello",
-      " basil"
-    ],
-    "status": true,
-    "picture": "/images/pizza6.png"
-  }
+    {
+        "id": 1,
+        "name": "Margherita",
+        "toppings": [
+            "mozzarella di bufala campana",
+            " pomodoro san marzano",
+            " basil"
+        ],
+        "status": true,
+        "picture": "/images/Pizza0.png"
+    },
+    {
+        "id": 2,
+        "name": "Prosciutto di Parma",
+        "toppings": [
+            "prosciutto di parma",
+            " mozzarella di bufala campana",
+            " pomodoro san marzano",
+            " basil",
+            " rucola",
+            " parmigiano reggiano"
+        ],
+        "status": "false",
+        "picture": "/images/pizza1.png"
+    },
+    {
+        "id": 3,
+        "name": "Cica",
+        "toppings": [
+            "salame calabrese piccante",
+            " mozzarella di bufala campana",
+            " pomodoro san marzano",
+            " basil",
+            " pomodoro ciliegino"
+        ],
+        "status": "false",
+        "picture": "/images/pizza2.png"
+    },
+    {
+        "id": 4,
+        "name": "Tonóka te drága",
+        "toppings": [
+            "tonno",
+            " mozzarella",
+            " pomodoro",
+            " basil",
+            " cipolla"
+        ],
+        "status": "false",
+        "picture": "/images/pizza3.png"
+    },
+    {
+        "id": 5,
+        "name": "Amalfitana",
+        "toppings": [
+            "prosciutto cotto",
+            " mozzarella di bufala campana",
+            " pomodoro",
+            " basil",
+            " capperino"
+        ],
+        "status": true,
+        "picture": "/images/pizza4.png"
+    },
+    {
+        "id": 6,
+        "name": "Quattro Formaggi",
+        "toppings": [
+            "mozzarella",
+            " grand padano",
+            " gorgonzola",
+            " ementali",
+            " pomodoro san marzano",
+            " basil"
+        ],
+        "status": true,
+        "picture": "/images/pizza5.png"
+    },
+    {
+        "id": 7,
+        "name": "Prosciutto e Funghi",
+        "toppings": [
+            "prosciutto cotto",
+            " mozzarella",
+            " pomodoro",
+            " funghi portobello",
+            " basil"
+        ],
+        "status": true,
+        "picture": "/images/pizza6.png"
+    }
 ]

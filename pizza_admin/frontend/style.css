@@ -33,9 +33,38 @@ body {
   top: 42px;
 }
 
-#backBtn,
-#new_pizza {
+#backBtn{
   height: 30px;
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  border: 2px solid orangered;
+}
+#backBtn a{
+  text-decoration: none;
+  color: white;
+}
+#new_pizza{
+  width: 150px;
+}
+#backBtn:hover,
+#new_pizza:hover{
+  background:transparent ;
+  
+}
+.fa-pizza-slice{
+  color: orangered;
+  font-size: 50px;
+  cursor: pointer;
+  transform: rotate(270deg);
+  transition: 0.4s ease-in-out;
+}
+.fa-pizza-slice:hover{
+  transform: rotate(630deg) scale(1.2);
+  color: #ffea32;
+
 }
 
 img {
@@ -147,8 +176,35 @@ img {
   width: 80%;
   opacity: 0;
   z-index: -1;
+  
 }
-
+#modalCloseBtn{
+  position: absolute;
+  top: 5px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+#modalCloseBtn:hover{
+  color: orangered;
+}
+#pizzaform{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+}
+#pizzaform button{
+  width: 250px;
+}
+#pizzaform #name{
+  width: 250px;
+}
+#pizzaform #toppings{
+  width:250px;
+  height: 100px;
+}
 button {
   padding: 4px;
 }
@@ -184,4 +240,52 @@ button {
   opacity: 1;
   visibility: visible;
   z-index: 100;
+}
+
+/*---ALERT BOX-------*/
+
+
+#myAlert {
+ 
+  position: fixed; 
+  z-index: -1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  visibility: hidden;
+  opacity: 0;
+}
+.alert-content {
+  background-color: orangered;
+  margin: 15% auto; 
+  padding: 20px;
+  /* width: 40%;  
+  height: 10%; */
+  border-radius: 5px;
+  font-size: 36px;
+  font-family:  "Abril Fatface", cursive;
+  color:white
+}
+.close {
+  color: rgb(255, 245, 245);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#myAlert.show{
+  -webkit-animation: anvil 0.7s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+  visibility: visible;
+  z-index: 205;
+  opacity: 1;
 }

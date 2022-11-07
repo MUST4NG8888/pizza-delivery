@@ -12,13 +12,16 @@ modal.style.top = "0";
 modal.style.paddingTop = "100px";
 const modalContent = document.createElement("div");
 modalContent.id = "modal_content";
-const modalCloseBtn = document.createElement("button");
+const modalCloseBtn = document.createElement("a");
 modal.append(modalContent);
-modalContent.append(modalCloseBtn);
-modalCloseBtn.innerText = "CLOSE"
+modalCloseBtn.innerHTML= "&times";
+modalCloseBtn.id="modalCloseBtn"
 adminDiv.append(modal);
 
+
+
 const pizzaForm = document.createElement("form");
+pizzaForm.id="pizzaform"
 const pizzaImg = document.createElement("img");
 pizzaImg.id = "pizzaImg";
 const pizzaName = document.createElement("input");
@@ -37,6 +40,9 @@ const avMark = document.createElement("span");
 avMark.id = "checkmark";
 const submitBtn = document.createElement("button");
 submitBtn.innerText = "SUBMIT";
+modalContent.append(modalCloseBtn);
+const alertBtn = document.getElementById("myAlert")
+const alertClose = document.getElementById("alertClose")
 
 modalContent.append(pizzaForm);
 pizzaForm.append(pizzaImg);
@@ -95,6 +101,7 @@ const renderPizza = async (data) => {
   for (let i = 0; i < data.length; i++) {
     let pizzaBox = document.createElement("div");
     let pizzaImg = document.createElement("img");
+    pizzaImg.id=`pizza${i}`
     let pizzaTitle = document.createElement("h1");
     let editButton = document.createElement("button");
     let deleteButton = document.createElement("button");
@@ -102,6 +109,13 @@ const renderPizza = async (data) => {
     pizzaDiv.append(pizzaBox);
     pizzaBox.append(pizzaImg);
     pizzaImg.src = `http://localhost:8008${data[i].picture}`;
+    let number= data[i].status
+    console.log(number)
+    if(!number){
+        document.getElementById(`pizza${i}`).style.filter="grayscale(100%)"
+    }else {
+      document.getElementById(`pizza${i}`).style.filter="grayscale(0%)"
+    }
     pizzaBox.append(pizzaTitle);
     pizzaTitle.innerText = data[i].name;
     pizzaBox.append(editButton);
@@ -164,7 +178,7 @@ const postPizza = async (e) => {
   resetPizzaForm();
   getPizzas();
   if (response.status === 204) {
-    alert("Uploaded! Congrats! Keep 'em coming!");
+    alertBtn.className="show";
   }
 };
 
@@ -189,7 +203,7 @@ const editPizza = async (e) => {
   });
   getPizzas();
   if (response.status === 204) {
-    alert("Uploaded! Congrats! Keep 'em coming!");
+    alertBtn.className="show"
   }
 };
 
@@ -263,3 +277,6 @@ modalCloseBtn.addEventListener("click", close);
 
 newPizzaBtn.addEventListener('click', newModal)
 
+alertClose.onclick = function() {
+  alertBtn.style.display = "none";
+}
